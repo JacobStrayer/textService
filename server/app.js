@@ -31,7 +31,7 @@ function textRequestHandler(req, res, number, carrier, region) {
     res.send({ success: false, message: 'Number and message parameters are required.' });
     return;
   }
-
+  console.log('carrier here', carrier)
   let carrierKey = null;
   if (carrier) {
     carrierKey = carrier.toLowerCase();
@@ -51,7 +51,6 @@ function textRequestHandler(req, res, number, carrier, region) {
     // contains a colon.
     message = ` ${message}`;
   }
-
   // Time to actually send the message
   text.send(number, message, carrierKey, region, (err) => {
     if (err) {
